@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.IUserMapper">
+	<!-- 解决表名与字段不匹配 -->
+	<resultMap type="com.model.User" id="yh">
+		<id property="yhId" column="yh_id" />
+		<result property="yhName" column="yh_name" />
+		<result property="yhPass" column="yh_pass" />
+		<result property="yhSexId" column="sex_id" />
+		<result property="yhDeptId" column="dept_id" />
+		<association property="sex" column="sex_id" javaType="com.model.Sex">
+			<id property="sexId" column="sex_id" />
+			<result property="sexName" column="sex_name" />
+		</association>
+		<association property="dept" column="dept_id" javaType="com.model.Dept">
+			<id property="deptId" column="dept_id" />
+			<result property="deptName" column="dept_name" />
+			<result property="deptInfo" column="dept_info" />
+		</association>
+	</resultMap>
+</mapper>
