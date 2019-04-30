@@ -2,8 +2,6 @@ package com.mapper;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -36,5 +34,5 @@ public interface IDeptMapper {
 	void update(Dept dept);
 
 	@Delete("delete from  code_dept where dept_id=#{id}")
-	void deleteById(@Param("id")int id);
+	void deleteById(@Param("id") int id);
 }

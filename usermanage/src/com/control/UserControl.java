@@ -1,7 +1,6 @@
 package com.control;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -66,22 +65,19 @@ public class UserControl {
 	@RequestMapping("/logupdate")
 	public String logupdateUser(User user) {
 		User u = (User) session.getAttribute("loguser");
-		if (user.getYhName() != null && !"".equals(user.getYhName().trim())
-				&& !"null".equals(user.getYhName().trim())
-				&& user.getYhPass() != null
-				&& !"".equals(user.getYhPass().trim())
+		if (user.getYhName() != null && !"".equals(user.getYhName().trim()) && !"null".equals(user.getYhName().trim())
+				&& user.getYhPass() != null && !"".equals(user.getYhPass().trim())
 				&& !"null".equals(user.getYhPass().trim())) {
-			if(!user.getYhName().equals(u.getYhName())||!user.getYhPass().equals(u.getYhPass()))
-			{
-				System.out.println("username"+user.getYhName());
-				System.out.println("name"+u.getYhName());
-				System.out.println("userpass"+user.getYhPass());
-				System.out.println("pass"+u.getYhPass());
+			if (!user.getYhName().equals(u.getYhName()) || !user.getYhPass().equals(u.getYhPass())) {
+				System.out.println("username" + user.getYhName());
+				System.out.println("name" + u.getYhName());
+				System.out.println("userpass" + user.getYhPass());
+				System.out.println("pass" + u.getYhPass());
 				userservice.updateUser(user);
 				return "redirect:out.do";
 			}
 			userservice.updateUser(user);
-		} 
+		}
 		return "redirect:q.do";
 	}
 
@@ -106,11 +102,9 @@ public class UserControl {
 		map.put("totalPage", totalPage);
 		int begin;// 查询开始
 		int count;// 当前页
-		if (pageNumber != null && !"".equals(pageNumber.trim())
-				&& !"null".equals(pageNumber.trim())) {
+		if (pageNumber != null && !"".equals(pageNumber.trim()) && !"null".equals(pageNumber.trim())) {
 			try {
-				if (Integer.parseInt(pageNumber) <= totalPage
-						&& Integer.parseInt(pageNumber) > 0) {
+				if (Integer.parseInt(pageNumber) <= totalPage && Integer.parseInt(pageNumber) > 0) {
 					count = Integer.parseInt(pageNumber);
 					begin = (count - 1) * 5;
 				} else if (Integer.parseInt(pageNumber) > totalPage) {
